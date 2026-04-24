@@ -3,6 +3,7 @@ module github.com/nanovms/ops-mcp
 go 1.23.4
 
 require (
+	github.com/invopop/jsonschema v0.12.0
 	github.com/metoro-io/mcp-golang v0.13.0
 	github.com/nanovms/ops v0.0.0-20250417002431-cd2208de79dc
 	github.com/spf13/cobra v1.2.1
@@ -95,7 +96,6 @@ require (
 	github.com/hashicorp/go-retryablehttp v0.7.7 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
-	github.com/invopop/jsonschema v0.12.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
