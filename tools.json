@@ -42,14 +42,14 @@
       "inputSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "properties": {
-          "longitude": {
+          "image_name": {
             "type": "string",
             "description": "The image name of the instance to create"
           }
         },
         "type": "object",
         "required": [
-          "longitude"
+          "image_name"
         ]
       }
     },
@@ -59,14 +59,14 @@
       "inputSchema": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "properties": {
-          "longitude": {
+          "image_name": {
             "type": "string",
             "description": "The image name of the instance to create"
           }
         },
         "type": "object",
         "required": [
-          "longitude"
+          "image_name"
         ]
       }
     },
