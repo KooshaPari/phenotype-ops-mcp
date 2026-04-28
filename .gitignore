@@ -1,2 +1,4 @@
 *.swp
 ops-mcp
+.task/
+.taskcache/
