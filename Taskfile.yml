@@ -42,7 +42,7 @@ tasks:
     desc: Run static checks for the Go codebase
     summary: Check Go formatting and run static analysis over all packages.
     cmds:
-      - test -z "$(gofmt -l .)"
+      - test -z "$(git ls-files '*.go' | xargs gofmt -l)"
       - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOTMP_DIR}}"
       - go vet -p {{.GO_PARALLELISM}} {{.GO_PACKAGES}}
 
