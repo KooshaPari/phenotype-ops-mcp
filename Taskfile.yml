@@ -1,0 +1,36 @@
+version: "3"
+
+vars:
+  BINARY_NAME: ops-mcp
+  GO_PACKAGES: ./...
+
+env:
+  GOTOOLCHAIN: go1.26.0
+  GOCACHE: "{{.TASKFILE_DIR}}/.taskcache/go-build"
+
+tasks:
+  default:
+    desc: Build the MCP server
+    cmds:
+      - task: build
+
+  build:
+    desc: Build the Go binary
+    cmds:
+      - go build -o {{.BINARY_NAME}} .
+
+  test:
+    desc: Run the Go test suite
+    cmds:
+      - go test {{.GO_PACKAGES}}
+
+  lint:
+    desc: Run static checks for the Go codebase
+    cmds:
+      - go vet {{.GO_PACKAGES}}
+
+  clean:
+    desc: Remove build artifacts and cached test data
+    cmds:
+      - find . -maxdepth 1 -type f \( -name '{{.BINARY_NAME}}' -o -name 'coverage.out' \) -delete
+      - go clean -testcache -cache
