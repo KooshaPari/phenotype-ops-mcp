@@ -7,9 +7,9 @@ import (
 	"os"
 	"reflect"
 
+	"github.com/invopop/jsonschema"
 	mcp_golang "github.com/metoro-io/mcp-golang"
 	"github.com/metoro-io/mcp-golang/transport/stdio"
-	"github.com/invopop/jsonschema"
 )
 
 // toolRegistration pairs a tool's metadata with its handler so we can both
