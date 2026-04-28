@@ -7,6 +7,7 @@ vars:
 env:
   GOTOOLCHAIN: go1.26.0
   GOCACHE: "{{.TASKFILE_DIR}}/.taskcache/go-build"
+  GOTMPDIR: "{{.TASKFILE_DIR}}/.taskcache/go-tmp"
 
 tasks:
   default:
@@ -16,21 +17,35 @@ tasks:
 
   build:
     desc: Build the Go binary
+    summary: Compile the Go MCP server into ./{{.BINARY_NAME}}.
+    sources:
+      - ./*.go
+      - go.mod
+      - go.sum
+    generates:
+      - "{{.BINARY_NAME}}"
     cmds:
-      - go build -o {{.BINARY_NAME}} .
+      - mkdir -p "{{.GOTMPDIR}}"
+      - go build -trimpath -o {{.BINARY_NAME}} .
 
   test:
     desc: Run the Go test suite
+    summary: Run all Go tests for the module.
     cmds:
+      - mkdir -p "{{.GOTMPDIR}}"
       - go test {{.GO_PACKAGES}}
 
   lint:
     desc: Run static checks for the Go codebase
+    summary: Run Go static analysis over all packages.
     cmds:
+      - mkdir -p "{{.GOTMPDIR}}"
       - go vet {{.GO_PACKAGES}}
 
   clean:
     desc: Remove build artifacts and cached test data
+    summary: Delete the local binary, coverage output, and Go build/test caches.
     cmds:
       - find . -maxdepth 1 -type f \( -name '{{.BINARY_NAME}}' -o -name 'coverage.out' \) -delete
       - go clean -testcache -cache
+      - find .taskcache/go-tmp -depth -mindepth 1 -delete 2>/dev/null || true
