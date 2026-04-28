@@ -40,8 +40,9 @@ tasks:
 
   lint:
     desc: Run static checks for the Go codebase
-    summary: Run Go static analysis over all packages.
+    summary: Check Go formatting and run static analysis over all packages.
     cmds:
+      - test -z "$(gofmt -l .)"
       - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOTMP_DIR}}"
       - go vet -p {{.GO_PARALLELISM}} {{.GO_PACKAGES}}
 
