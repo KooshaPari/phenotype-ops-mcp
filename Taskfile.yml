@@ -20,6 +20,11 @@ tasks:
     cmds:
       - task: build
 
+  go:prepare:
+    internal: true
+    cmds:
+      - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOMODCACHE_DIR}}" "{{.GOTMP_DIR}}"
+
   build:
     desc: Build the Go binary
     summary: Compile the Go MCP server into ./{{.BINARY_NAME}}.
@@ -30,14 +35,14 @@ tasks:
     generates:
       - "{{.BINARY_NAME}}"
     cmds:
-      - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOMODCACHE_DIR}}" "{{.GOTMP_DIR}}"
+      - task: go:prepare
       - go build -p {{.GO_PARALLELISM}} -trimpath -o {{.BINARY_NAME}} .
 
   test:
     desc: Run the Go test suite
     summary: Run all Go tests for the module.
     cmds:
-      - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOMODCACHE_DIR}}" "{{.GOTMP_DIR}}"
+      - task: go:prepare
       - go test -p {{.GO_PARALLELISM}} {{.GO_PACKAGES}}
 
   lint:
@@ -45,7 +50,7 @@ tasks:
     summary: Check Go formatting and run static analysis over all packages.
     cmds:
       - test -z "$(git ls-files '*.go' | xargs gofmt -l)"
-      - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOMODCACHE_DIR}}" "{{.GOTMP_DIR}}"
+      - task: go:prepare
       - go vet -p {{.GO_PARALLELISM}} {{.GO_PACKAGES}}
 
   clean:
