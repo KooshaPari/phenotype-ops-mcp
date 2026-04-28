@@ -4,9 +4,13 @@ vars:
   BINARY_NAME: ops-mcp
   GO_PACKAGES: ./...
   GO_PARALLELISM: 1
+  GOCACHE_DIR: "{{.TASKFILE_DIR}}/.cache/go-build"
+  GOTMP_DIR: "{{.TASKFILE_DIR}}/.cache/go-tmp"
 
 env:
   GOTOOLCHAIN: go1.26.0
+  GOCACHE: "{{.GOCACHE_DIR}}"
+  GOTMPDIR: "{{.GOTMP_DIR}}"
 
 tasks:
   default:
@@ -24,23 +28,28 @@ tasks:
     generates:
       - "{{.BINARY_NAME}}"
     cmds:
+      - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOTMP_DIR}}"
       - go build -p {{.GO_PARALLELISM}} -trimpath -o {{.BINARY_NAME}} .
 
   test:
     desc: Run the Go test suite
     summary: Run all Go tests for the module.
     cmds:
+      - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOTMP_DIR}}"
       - go test -p {{.GO_PARALLELISM}} {{.GO_PACKAGES}}
 
   lint:
     desc: Run static checks for the Go codebase
     summary: Run Go static analysis over all packages.
     cmds:
+      - mkdir -p "{{.GOCACHE_DIR}}" "{{.GOTMP_DIR}}"
       - go vet -p {{.GO_PARALLELISM}} {{.GO_PACKAGES}}
 
   clean:
     desc: Remove build artifacts and cached test data
-    summary: Delete the local binary, coverage output, and Go build/test caches.
+    summary: Delete the local binary, coverage output, and repo-local Go build/test caches.
     cmds:
       - find . -maxdepth 1 -type f \( -name '{{.BINARY_NAME}}' -o -name 'coverage.out' \) -delete
       - go clean -testcache -cache
+      - find .cache .taskcache -type f -delete 2>/dev/null || true
+      - find .cache .taskcache -type d -depth -empty -delete 2>/dev/null || true
