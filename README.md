@@ -1,5 +1,7 @@
 # phenotype-ops-mcp
 
+[![AI Slop Inside](https://sladge.net/badge.svg)](https://sladge.net)
+
 > **Phenotype fork notice**
 >
 > This repository is a Phenotype-org fork of [nanovms/ops-mcp](https://github.com/nanovms/ops-mcp),
