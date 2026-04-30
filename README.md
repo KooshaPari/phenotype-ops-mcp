@@ -1,5 +1,7 @@
 # phenotype-ops-mcp — MCP Server for NanoVM Instance Management
 
+[![AI Slop Inside](https://sladge.net/badge.svg)](https://sladge.net)
+
 Model Context Protocol (MCP) server for the nanoVMs `ops` unikernel toolchain, extended with Phenotype-specific features (auth, multi-tenant isolation, observability). Enables Claude agents and human developers to interact with nanoVM instances and images through a standardized MCP interface.
 
 ## Overview
