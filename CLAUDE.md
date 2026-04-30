@@ -1,32 +1,37 @@
-# phenotype-ops-mcp — Claude Code Instructions
+# CLAUDE.md — phenotype-ops-mcp
 
 ## Project Overview
-- **Name**: phenotype-ops-mcp
-- **Description**: MCP server for working with unikernels using the nanos/ops toolchain
-- **Location**: `/Users/kooshapari/CodeProjects/Phenotype/repos/phenotype-ops-mcp`
-- **Language Stack**: Go
-- **Status**: Active development
 
-## AgilePlus Mandate
-All work MUST be tracked in AgilePlus:
-- Reference: `/Users/kooshapari/CodeProjects/Phenotype/repos/AgilePlus`
-- CLI: `cd /Users/kooshapari/CodeProjects/Phenotype/repos/AgilePlus && agileplus <command>`
-- No code without corresponding AgilePlus spec.
+**Name**: phenotype-ops-mcp
+**Purpose**: Go MCP server for Phenotype operations
+**Language**: Go
+**Status**: Active
 
-## Stack & Commands
+## Development
+
+### Build
 ```bash
 go build ./...
-go test ./...
-golangci-lint run
 ```
 
-## Quality Checks
-- `go build ./...`
-- `go test ./...`
+### Test
+```bash
+go test ./...
+```
 
-## Git & Branch Discipline
-- Feature branches via worktrees
-- Canonical: `main`
+### Lint & Format
+```bash
+go vet ./...
+```
 
-## References
-- Parent workspace: `/Users/kooshapari/CodeProjects/Phenotype/repos/CLAUDE.md`
+## Quality Gates
+
+- All tests must pass
+- All lints must pass
+- No suppressions without justification
+
+## Governance References
+
+- **Parent governance**: `/Users/kooshapari/CodeProjects/Phenotype/repos/CLAUDE.md`
+- **Global governance**: `/Users/kooshapari/.claude/CLAUDE.md`
+- **Local agents**: See `AGENTS.md`
