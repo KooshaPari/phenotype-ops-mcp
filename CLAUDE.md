@@ -1,35 +1,37 @@
-# Project: [PROJECT_NAME]
+# CLAUDE.md — phenotype-ops-mcp
 
-## Overview
+## Project Overview
 
-[Brief description of project]
+**Name**: phenotype-ops-mcp
+**Purpose**: Go MCP server for Phenotype operations
+**Language**: Go
+**Status**: Active
 
-## Language & Stack
+## Development
 
-[Primary language, framework, key dependencies]
-
-## Local Development
-
+### Build
 ```bash
-# Build/test commands
+go build ./...
 ```
 
-## Governance
+### Test
+```bash
+go test ./...
+```
 
-- **AgilePlus Spec Required**: All work tracked in AgilePlus before implementation
-- **FR Traceability**: All tests must reference FUNCTIONAL_REQUIREMENTS.md
-- **Quality Gates**: Run local lint/test before pushing
-- **Scripting Language**: Rust-first per Phenotype governance
+### Lint & Format
+```bash
+go vet ./...
+```
 
-## Documentation
+## Quality Gates
 
-- README.md — Main project doc
-- docs/ — Organized documentation
-- FUNCTIONAL_REQUIREMENTS.md — Feature tracking
-- AGENTS.md — AI agent instructions
+- All tests must pass
+- All lints must pass
+- No suppressions without justification
 
-## References
+## Governance References
 
-- Phenotype Root: ~/.claude/CLAUDE.md
-- Workspace: /Users/kooshapari/CodeProjects/Phenotype/repos/CLAUDE.md
-- AgilePlus: cd AgilePlus && agileplus <command>
+- **Parent governance**: `/Users/kooshapari/CodeProjects/Phenotype/repos/CLAUDE.md`
+- **Global governance**: `/Users/kooshapari/.claude/CLAUDE.md`
+- **Local agents**: See `AGENTS.md`
