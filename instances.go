@@ -10,7 +10,7 @@ import (
 )
 
 type InstanceArguments struct {
-	ImageName string `json:"longitude" jsonschema:"required,description=The image name of the instance to create"`
+	ImageName string `json:"image_name" jsonschema:"required,description=The image name of the instance to create"`
 }
 
 func instanceLogs(arguments InstanceArguments) (*mcp_golang.ToolResponse, error) {
