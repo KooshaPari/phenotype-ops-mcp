@@ -1,35 +1,18 @@
-# Project: [PROJECT_NAME]
+# CLAUDE.md — phenotype-ops-mcp
 
-## Overview
+Extends parent governance. See:
+- Global baseline: `~/.claude/CLAUDE.md`
+- Phenotype root: `/Users/kooshapari/CodeProjects/Phenotype/repos/CLAUDE.md`
+- AgilePlus: `/Users/kooshapari/CodeProjects/Phenotype/repos/AgilePlus`
 
-[Brief description of project]
+## Project Overview
 
-## Language & Stack
+MCP server for nanoVMs ops unikernel toolchain, extended with Phenotype-specific features.
 
-[Primary language, framework, key dependencies]
+## Status
 
-## Local Development
+ACTIVE — maintained fork of upstream nanoVMs ops-mcp.
 
-```bash
-# Build/test commands
-```
+## AgilePlus Mandate
 
-## Governance
-
-- **AgilePlus Spec Required**: All work tracked in AgilePlus before implementation
-- **FR Traceability**: All tests must reference FUNCTIONAL_REQUIREMENTS.md
-- **Quality Gates**: Run local lint/test before pushing
-- **Scripting Language**: Rust-first per Phenotype governance
-
-## Documentation
-
-- README.md — Main project doc
-- docs/ — Organized documentation
-- FUNCTIONAL_REQUIREMENTS.md — Feature tracking
-- AGENTS.md — AI agent instructions
-
-## References
-
-- Phenotype Root: ~/.claude/CLAUDE.md
-- Workspace: /Users/kooshapari/CodeProjects/Phenotype/repos/CLAUDE.md
-- AgilePlus: cd AgilePlus && agileplus <command>
+All work MUST be tracked in AgilePlus.
